@@ -34,7 +34,7 @@ class ViewController: UIViewController {
         tableView.refreshControl!.addTarget(self, action: #selector(reloadDataSource), for: .valueChanged)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewIsAppearing(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         reloadDataSource()
@@ -124,14 +124,10 @@ class ViewController: UIViewController {
     func deleteContact(indexPath: IndexPath) {
         let deletedContact = arrayOfContactGroup[indexPath.section].contacts.remove(at: indexPath.row)
         
-        // Если количество контактов в секции удаленного контакта меньше одного, то данная секция, а имеено ContactGroup удаляется из массива arrayOfContactGroup
         if arrayOfContactGroup[indexPath.section].contacts.count < 1 {
-            
-            // Удаление объекта ContactGroup из массива arrayOfContactGroup
             arrayOfContactGroup.remove(at: indexPath.section)
         }
         
-        // Здесь уже идет удаление контакта из базы данных
         helper.delete(contactToDelete: deletedContact)
     }
     
@@ -181,7 +177,6 @@ extension ViewController: UITableViewDataSource {
     }
 }
 
-// Расширение для ViewController и подписка на протокол UITableViewDelegate
 extension ViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
