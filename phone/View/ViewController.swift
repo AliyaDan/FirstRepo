@@ -7,7 +7,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, ContactViewControllerDelegate {
+    func contactWasDeleted() {
+        reloadDataSource()
+    }
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
@@ -32,12 +36,12 @@ class ViewController: UIViewController {
         tableView.delegate = self
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl!.addTarget(self, action: #selector(reloadDataSource), for: .valueChanged)
+        
+        reloadDataSource()
     }
     
     override func viewIsAppearing(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        reloadDataSource()
     }
     
     
@@ -185,18 +189,7 @@ extension ViewController: UITableViewDelegate {
         let contact = getContact(indexPath: indexPath)
         let contactViewController = ContactViewController()
         contactViewController.contact = contact
+        contactViewController.delegate = self
         navigationController?.pushViewController(contactViewController, animated: true)
     }
-}
-    
-
-struct Contact: Codable {
-    let firstName: String
-    let lastName: String
-    let phone: String
-}
-
-struct ContactGroup {
-    let title: String
-    var contacts: [Contact]
 }

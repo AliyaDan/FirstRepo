@@ -14,10 +14,57 @@
             filePath = "phone/View/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
             landmarkName = "deleteContact(indexPath:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "5A1C9E73-DB32-474A-8690-DC9BB2BEA464 - ac4967eab776809d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "phone.ViewController.deleteContact(indexPath: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "phone"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aliyadekelbayeva/Desktop/IOS%20Course/phone/phone/View/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "131"
+                  endingLineNumber = "131"
+                  offsetFromSymbolStart = "680">
+               </Location>
+               <Location
+                  uuid = "5A1C9E73-DB32-474A-8690-DC9BB2BEA464 - ac4967eab776809d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "phone.ViewController.deleteContact(indexPath: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "phone"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aliyadekelbayeva/Desktop/IOS%20Course/phone/phone/View/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "131"
+                  endingLineNumber = "131"
+                  offsetFromSymbolStart = "812">
+               </Location>
+               <Location
+                  uuid = "5A1C9E73-DB32-474A-8690-DC9BB2BEA464 - ac4967eab77680df"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "phone.ViewController.deleteContact(indexPath: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "phone"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aliyadekelbayeva/Desktop/IOS%20Course/phone/phone/View/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "133"
+                  endingLineNumber = "133"
+                  offsetFromSymbolStart = "812">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
