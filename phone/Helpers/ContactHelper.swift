@@ -1,3 +1,10 @@
+//
+//  ContactHelper.swift
+//  phone
+//
+//  Created by Aliya Dekelbayeva on 07.12.2023.
+//
+
 import Foundation
 
 struct ContactHelper {
@@ -23,6 +30,7 @@ struct ContactHelper {
     func add(contact: Contact) {
         var allContacts = getAllContacts()
         allContacts.append(contact)
+        
         save(allContacts: allContacts)
     }
 
@@ -37,50 +45,31 @@ struct ContactHelper {
     }
     
     func edit(contactToEdit: Contact, editedContact: Contact) {
-        // Извлекаются все контакты
         var allContacts = getAllContacts()
         
-        // Пробегаемся по каждому контакту
         for index in 0..<allContacts.count {
-            // извлекаемся контакт по индексу
             let contact = allContacts[index]
             
-            //Сверяем данные контакта
             if contact.firstName == contactToEdit.firstName && contact.lastName == contactToEdit.lastName && contact.phone == contactToEdit.phone {
-                // Если они одинаковые то срабатывает данный блок кода
-                
-                // Удаляем из массива allContacts старый контакт по индексу
                 allContacts.remove(at: index)
-                // Добавляем новый, отредактрованный контакт в массив под индексом
                 allContacts.insert(editedContact, at: index)
                 
-                // ключевое слово break выводит чтение кода из цикла. Почему именно здесь? Потому что здесь мы уже нашли нужный нам контакт и заменили на новый, и дальше нет смысла пробегаться по остальным контактам в массиве allContacts.
                 break
             }
         }
         
-        // Перезаписываемся список контактов в базу данных
         save(allContacts: allContacts)
     }
     
     func delete(contactToDelete: Contact) {
-        // Извлекаются все контакты
         var allContacts = getAllContacts()
         
-        // Пробегается по каждому контакту в allContacts
         for index in 0..<allContacts.count {
-            
-            // Извлечение контакта
             let contact = allContacts[index]
-            
-            //Сверяем данные контакта
+
             if contact.firstName == contactToDelete.firstName && contact.lastName == contactToDelete.lastName && contact.phone == contactToDelete.phone {
-                // Если они одинаковые то срабатывает данный блок кода
-                
-                // Удаляется контакт с индексом
                 allContacts.remove(at: index)
-                
-                // ключевое слово break выводит чтение кода из цикла. Почему именно здесь? Потому что здесь мы уже нашли нужный нам контакт и заменили на новый, и дальше нет смысла пробегаться по остальным контактам в массиве allContacts.
+
                 break
             }
         }

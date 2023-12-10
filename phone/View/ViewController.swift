@@ -7,11 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, ContactViewControllerDelegate {
-    func contactWasDeleted() {
-        reloadDataSource()
-    }
-    
+class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
@@ -36,12 +32,12 @@ class ViewController: UIViewController, ContactViewControllerDelegate {
         tableView.delegate = self
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl!.addTarget(self, action: #selector(reloadDataSource), for: .valueChanged)
-        
-        reloadDataSource()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewIsAppearing(_ animated: Bool) {
         super.viewWillAppear(animated)
+
+        reloadDataSource()
     }
     
     
@@ -93,14 +89,14 @@ class ViewController: UIViewController, ContactViewControllerDelegate {
         present(alertController, animated: true)
         }
     
-    func showErrorMessage(message: String) {
-        let alertController = UIAlertController(title: "Error:", message: message, preferredStyle: .alert)
-        
-        let okAction = UIAlertAction(title: "Okay", style: .default)
-        alertController.addAction(okAction)
-        
-        present(alertController, animated: true)
-    }
+        func showErrorMessage(message: String) {
+            let alertController = UIAlertController(title: "Error:", message: message, preferredStyle: .alert)
+            
+            let okAction = UIAlertAction(title: "Okay", style: .default)
+            alertController.addAction(okAction)
+            
+            present(alertController, animated: true)
+        }
     
     @objc
     func reloadDataSource() {
@@ -127,6 +123,7 @@ class ViewController: UIViewController, ContactViewControllerDelegate {
     
     func deleteContact(indexPath: IndexPath) {
         let deletedContact = arrayOfContactGroup[indexPath.section].contacts.remove(at: indexPath.row)
+        
         if arrayOfContactGroup[indexPath.section].contacts.count < 1 {
             arrayOfContactGroup.remove(at: indexPath.section)
         }
@@ -180,7 +177,6 @@ extension ViewController: UITableViewDataSource {
     }
 }
 
-// Расширение для ViewController и подписка на протокол UITableViewDelegate
 extension ViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -189,9 +185,18 @@ extension ViewController: UITableViewDelegate {
         let contact = getContact(indexPath: indexPath)
         let contactViewController = ContactViewController()
         contactViewController.contact = contact
-        contactViewController.delegate = self
         navigationController?.pushViewController(contactViewController, animated: true)
     }
 }
     
 
+struct Contact: Codable {
+    let firstName: String
+    let lastName: String
+    let phone: String
+}
+
+struct ContactGroup {
+    let title: String
+    var contacts: [Contact]
+}
