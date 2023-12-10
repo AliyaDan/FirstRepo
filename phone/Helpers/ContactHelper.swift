@@ -1,10 +1,3 @@
-//
-//  ContactHelper.swift
-//  phone
-//
-//  Created by Aliya Dekelbayeva on 07.12.2023.
-//
-
 import Foundation
 
 struct ContactHelper {
@@ -28,13 +21,8 @@ struct ContactHelper {
     }
     
     func add(contact: Contact) {
-        
-        // Но сначала извлекает все сохраненные контакты, так как значение переписывается
         var allContacts = getAllContacts()
-        // Добавление нового контакта
         allContacts.append(contact)
-        
-        // сохранение контактов в базу данных
         save(allContacts: allContacts)
     }
 

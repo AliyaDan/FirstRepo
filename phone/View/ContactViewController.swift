@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ContactViewControllerDelegate {
+    func contactWasDeleted()
+}
+
 class ContactViewController: UIViewController {
 
     @IBOutlet weak var progressView: UIProgressView!
@@ -27,6 +31,8 @@ class ContactViewController: UIViewController {
     var timer: Timer?
     var countDown: Int = 0
     var countDownTotal: Int = 5
+    
+    var delegate: ContactViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -178,23 +184,8 @@ class ContactViewController: UIViewController {
             
             timer?.invalidate()
             navigationController?.popViewController(animated: true)
-        }
-    }
-}
-
-enum ContactType {
-    case message
-    case call
-    case faceTime
-    
-    var urlScheme: String {
-        switch self {
-        case .message:
-            return "sms://"
-        case .call:
-            return "tel://"
-        case .faceTime:
-            return "facetime://"
+            
+            delegate?.contactWasDeleted()
         }
     }
 }

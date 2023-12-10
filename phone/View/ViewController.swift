@@ -7,7 +7,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, ContactViewControllerDelegate {
+    func contactWasDeleted() {
+        reloadDataSource()
+    }
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
@@ -32,12 +36,12 @@ class ViewController: UIViewController {
         tableView.delegate = self
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl!.addTarget(self, action: #selector(reloadDataSource), for: .valueChanged)
+        
+        reloadDataSource()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        reloadDataSource()
     }
     
     
@@ -89,14 +93,14 @@ class ViewController: UIViewController {
         present(alertController, animated: true)
         }
     
-        func showErrorMessage(message: String) {
-            let alertController = UIAlertController(title: "Error:", message: message, preferredStyle: .alert)
-            
-            let okAction = UIAlertAction(title: "Okay", style: .default)
-            alertController.addAction(okAction)
-            
-            present(alertController, animated: true)
-        }
+    func showErrorMessage(message: String) {
+        let alertController = UIAlertController(title: "Error:", message: message, preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "Okay", style: .default)
+        alertController.addAction(okAction)
+        
+        present(alertController, animated: true)
+    }
     
     @objc
     func reloadDataSource() {
@@ -123,15 +127,10 @@ class ViewController: UIViewController {
     
     func deleteContact(indexPath: IndexPath) {
         let deletedContact = arrayOfContactGroup[indexPath.section].contacts.remove(at: indexPath.row)
-        
-        // Если количество контактов в секции удаленного контакта меньше одного, то данная секция, а имеено ContactGroup удаляется из массива arrayOfContactGroup
         if arrayOfContactGroup[indexPath.section].contacts.count < 1 {
-            
-            // Удаление объекта ContactGroup из массива arrayOfContactGroup
             arrayOfContactGroup.remove(at: indexPath.section)
         }
         
-        // Здесь уже идет удаление контакта из базы данных
         helper.delete(contactToDelete: deletedContact)
     }
     
@@ -190,18 +189,9 @@ extension ViewController: UITableViewDelegate {
         let contact = getContact(indexPath: indexPath)
         let contactViewController = ContactViewController()
         contactViewController.contact = contact
+        contactViewController.delegate = self
         navigationController?.pushViewController(contactViewController, animated: true)
     }
 }
     
 
-struct Contact: Codable {
-    let firstName: String
-    let lastName: String
-    let phone: String
-}
-
-struct ContactGroup {
-    let title: String
-    var contacts: [Contact]
-}

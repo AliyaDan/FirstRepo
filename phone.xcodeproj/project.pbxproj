@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B701FE762B255A8700CF16D1 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = B701FE752B255A8700CF16D1 /* Types.swift */; };
 		B74E14A22B05139500042379 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74E14A12B05139500042379 /* AppDelegate.swift */; };
 		B74E14A42B05139500042379 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74E14A32B05139500042379 /* SceneDelegate.swift */; };
 		B74E14A62B05139500042379 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74E14A52B05139500042379 /* ViewController.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B701FE752B255A8700CF16D1 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		B74E149E2B05139500042379 /* phone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = phone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B74E14A12B05139500042379 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B74E14A32B05139500042379 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				B79658AF2B22265100E2C3E3 /* ContactHelper.swift */,
+				B701FE752B255A8700CF16D1 /* Types.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 				B74E14A62B05139500042379 /* ViewController.swift in Sources */,
 				B79658AC2B20831500E2C3E3 /* ContactTableViewCell.swift in Sources */,
 				B79658B02B22265100E2C3E3 /* ContactHelper.swift in Sources */,
+				B701FE762B255A8700CF16D1 /* Types.swift in Sources */,
 				B74E14BA2B05CDA500042379 /* ContactViewController.swift in Sources */,
 				B74E14A22B05139500042379 /* AppDelegate.swift in Sources */,
 				B74E14A42B05139500042379 /* SceneDelegate.swift in Sources */,
