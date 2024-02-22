@@ -52,7 +52,7 @@ class ViewController: UIViewController, ContactViewControllerDelegate {
     let allContactsKey: String = "allContactsKey"
     
     func fillInfo() {
-        let alertController = UIAlertController(title: "Add contact Test", message: nil, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Add contact", message: nil, preferredStyle: .alert)
         print(helper.getAllContacts())
 
         alertController.addTextField { textField in
